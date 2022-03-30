@@ -40,7 +40,12 @@ require('dotenv').config();
         }
 
         // 동기식으로 파일 쓰기(writeFileSync)
-        fs.writeFileSync(`${dir}/${sheet.title}.json`, data);
+        try {
+          fs.writeFileSync(`${dir}/${sheet.title}.json`, data);
+          console.log('File written successfully');
+        } catch (err) {
+          console.error(err);
+        }
       });
     }
   }
